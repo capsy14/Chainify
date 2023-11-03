@@ -78,6 +78,6 @@ contract Chainify {
 
     function withdraw() public onlyOwner {
         (bool success, ) = owner.call{value: address(this).balance}("");
-        require(success);
+        require(success);   
     }
 }

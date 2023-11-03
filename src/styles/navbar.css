@@ -1,0 +1,92 @@
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    color: #fff;
+    padding: 10px;
+    display: flex; /* Use flex to align items horizontally */
+    justify-content: space-between; /* Space between the logo and other content */
+    align-items: center; /* Vertically center content */
+    z-index: 999; /* Ensure it's above other content */
+  }
+  
+  .Logo-name h1 {
+    font-size: 60px;
+    margin-top: 10px;
+    text-align: left; /* Left-align the logo */
+  }
+  .logoname {
+    font-size: 0px;    /* size: 332px; */
+    /* margin: 0; */
+    text-align: left;
+    background: linear-gradient(to right, #00C8FF, rgb(85, 0, 255)); /* Gradient background for the logo */
+    -webkit-background-clip: text; /* Clip the text with the gradient */
+    color: transparent; /* Make the text color transparent */
+  }
+  h2 {
+    background-color: #3c83ca;
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+    background: linear-gradient(to right, #00C8FF, rgb(85, 0, 255)); /* Gradient background for the logo */
+    -webkit-background-clip: text; /* Clip the text with the gradient */
+    color: transparent; /* Make the text color transparent */
+  }
+  
+  
+  h2 button {
+    background-color: rgb(85, 0, 255);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  h2 button:hover {
+    background-color: rgb(250, 3, 254)
+  }
+  
+  button.meta_connect {
+    background-color: #007BFF;
+    color: #d73131;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button.meta_connect:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Toast Container Styles */
+  /* You can customize the toast styles separately in your own CSS if needed */
+  .Toastify__toast-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+  }
+  
+  .Toastify__toast {
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    /* color: blue; */
+  }
+  
+  .Toastify__toast--success {
+    background-color: #ffffff;
+    color: rgb(98, 27, 204);
+  }
+  
+  .Toastify__toast--success:hover {
+    background-color: #edeaef;
+  }
+  
+  
