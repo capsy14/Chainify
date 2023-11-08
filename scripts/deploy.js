@@ -4,19 +4,26 @@
 // You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
 // will compile your contracts, add the Hardhat Runtime Environment's members to the
 // global scope, and execute the script.
-const hre = require("hardhat");
+const hre = require("hardhat")
+const { items } = require("../src/items.json")
 
-const {items} = require("../src/assets/items.json")
-const tokens = (n) =>{
-  return ethers.parseUnits(n.toString(),'ether');
+const tokens = (n) => {
+  return ethers.utils.parseUnits(n.toString(), 'ether')
 }
+
 async function main() {
-  const [deployer] = await ethers.getSigners();
-  const Chainify= await hre.ethers.getContractFactory("Chainify");
-  const chainify= await Chainify.deploy()
-  await chainify.waitForDeployment()
-  console.log(`Deployed contract address : ${chainify.target}\n`)
-  for(let i =0;i<items.length;i++){
+  // Setup accounts
+  const [deployer] = await ethers.getSigners()
+
+  // Deploy Chainify
+  const Chainify = await hre.ethers.getContractFactory("Chainify")
+  const chainify = await Chainify.deploy()
+  await chainify.deployed()
+
+  console.log(`Deployed Chainify at: ${chainify.address}\n`)
+
+  // Listing items...
+  for (let i = 0; i < items.length; i++) {
     const transaction = await chainify.connect(deployer).list(
       items[i].id,
       items[i].name,
@@ -26,14 +33,15 @@ async function main() {
       items[i].rating,
       items[i].stock,
     )
-    await transaction.wait()
-    console.log(`Items ${items[i].id}: ${items[i].name}`);
 
+    await transaction.wait()
+
+    console.log(`Listed item ${items[i].id}: ${items[i].name}`)
   }
 }
-  
 
-
+// We recommend this pattern to be able to use async/await everywhere
+// and properly handle errors.
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
